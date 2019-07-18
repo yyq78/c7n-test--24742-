@@ -7,8 +7,8 @@ const config = {
   //master: '@choerodon/master',
   //dashboard: {},
 
-  master: './react/master',
-  homePath: './react/home',
+  master: './react/src/app/demo/containers/master',
+  homePath: './react/src/app/demo/containers/home',
 };
 
 module.exports = config;

@@ -3,7 +3,7 @@
   "name": "c7n-test-15085",
   "version": "1.0.0",
   "description": "",
-  "main": "./react/RouteIndex.js",
+  "main": "./react/src/app/demo/containers/RouteIndex.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "choerodon-front-boot start --config ./react/config.js"

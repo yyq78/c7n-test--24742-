@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+.container .router {
+  flex: 1;
+}
+/*# sourceMappingURL=./master.css.map */
