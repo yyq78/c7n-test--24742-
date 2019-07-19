@@ -15,6 +15,7 @@ class Role extends Component {
   }
   renderTable = () => {
     const allData=Store.data.slice();
+    const {isLoading,pagination}=Store;
     const dataSource=[];
     const columns=[{
         title:"角色名称",
@@ -24,7 +25,12 @@ class Role extends Component {
       {
         title:"角色编码",
         dataIndex:"code",
-        key:"code"
+        key:"code",
+        render:text=>{
+          return(
+            <span style={{"textOverflow": "ellipsis","whiteSpace": "nowrap","overflow": "hidden"}}>{text}</span>
+          )
+        }
       },
       {
         title:"角色来源",
@@ -63,9 +69,21 @@ class Role extends Component {
       let obj={key:id,name,code,source:description,state:enabled};
       dataSource.push(obj);
     });
-
-    console.log(dataSource);
-    return (<Table dataSource={dataSource} columns={columns}></Table>)
+    return (<Table 
+      dataSource={dataSource} 
+      columns={columns} 
+      pagination={pagination} 
+      loading={isLoading} 
+      onChange={this.handleTableChange}
+      ></Table>)
+  }
+  handleTableChange = (pagination) => {
+    console.log(pagination);
+    Store.pagination=pagination;
+    Store.loadData(
+      
+     pagination.current,pagination.pageSize,
+    );
   }
   render() {
     
