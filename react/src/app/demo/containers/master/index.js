@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MyHeader from './header';
 import Aside from './aside';
 import './style/master.less';
+
 export default class Master extends Component {
   render() {
     const { AutoRouter } = this.props;
@@ -17,4 +18,5 @@ export default class Master extends Component {
       </div>
     );
   }
+
 }

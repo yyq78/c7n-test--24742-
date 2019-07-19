@@ -3,7 +3,6 @@ import { observer } from 'mobx-react';
 import { Button, Table,Icon ,Menu} from 'choerodon-ui';
 import { Action} from '@choerodon/boot';
 import Store from './stores/index';
-import './style/role.less';
 
 @observer
 class Role extends Component {
@@ -22,7 +21,6 @@ class Role extends Component {
   }
   componentDidMount() {
     this.loadData();
-
   }
 
   loadData = () => {
@@ -107,8 +105,8 @@ class Role extends Component {
   render() {
     return (
       <div>
-         <div className="container">
-            <div className="role">
+         <div>
+            <div>
               {this.renderTable()}
             </div>
          </div>
