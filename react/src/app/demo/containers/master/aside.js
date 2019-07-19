@@ -14,7 +14,6 @@ class Aside extends Component{
         });
     }
     render(){
-        console.log("render:",this.props);
         return (
             <HashRouter>
                 <div  style={{ width: "250px" }}>
