@@ -1,0 +1,18 @@
+.creatHead {
+  font-size: 20px;
+  height: 58px;
+  min-height: 58px;
+  line-height: 57px;
+  border-bottom: 1px solid #d3d3d3;
+}
+.creatBack {
+  margin-left: 20px;
+}
+.creatTitle {
+  display: inline-block;
+  margin-left: 15px;
+}
+.c7n-form-inline .c7n-form-item {
+  padding: 10px;
+}
+/*# sourceMappingURL=./creat.css.map */

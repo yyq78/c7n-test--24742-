@@ -91,7 +91,6 @@ class Role extends Component {
   toCreat(){
     this.props.history.push("/test/creat");
   }
-
   render() {
     const MAP=["site","organization","project"];
     const onClick = function ({ key }) {
