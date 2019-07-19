@@ -10,17 +10,17 @@ class Store {
     pageSize: 10,
     total: '',
   };
-
+  @observable level="site";
   @computed
   get getData() {
     return this.data.slice();
   }
-
   @action
   loadData(page = this.pagination.current, size = this.pagination.pageSize) {
     const body = {};
     const sorter = [];
-    axios.post(`/iam/v1/roles/search?page=${page}&size=${size}&sort=id,desc`, { level: 'site' }).then((res)=>{
+    const level=this.level;
+    axios.post(`/iam/v1/roles/search?page=${page}&size=${size}&sort=id,desc`, {level}).then((res)=>{
       this.data = res.list;
       this.pagination = {
         current: res.pageNum,

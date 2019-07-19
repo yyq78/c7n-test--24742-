@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import { Button, Table,Icon ,Menu} from 'choerodon-ui';
+import { Button, Table,Icon ,Menu,Dropdown} from 'choerodon-ui';
 import { Action} from '@choerodon/boot';
 import Store from './stores/index';
-
+import './style/pageHead.less';
+import {Link} from 'react-router-dom';
 @observer
 class Role extends Component { 
   constructor(props){
     super(props);
-    this.state={};
+    this.state={
+      MAP:["全局","组织","项目"]
+    }
   }
   componentDidMount() {
     Store.loadData();
@@ -85,12 +88,45 @@ class Role extends Component {
      pagination.current,pagination.pageSize,
     );
   }
+  toCreat(){
+    this.props.history.push("/test/creat");
+  }
+
   render() {
-    
+    const MAP=["site","organization","project"];
+    const onClick = function ({ key }) {
+       Store.level=MAP[key-1];
+       Store.loadData();
+    };
+    const menu=(
+      <Menu onClick={onClick}>
+          <Menu.Item key="1" value="全局">
+            <div>全局</div>
+          </Menu.Item>
+          <Menu.Item key="2" value="组织">
+            <div>组织</div>
+          </Menu.Item>
+          <Menu.Item key="3" value="项目">
+          <div> 项目 </div>
+          </Menu.Item>
+      </Menu>
+    );
     return (
       <div>
-        {this.renderTable()}
+        <div className="page-head">
+          <span className="page-head-title">角色管理</span>
+          <span>
+            <Dropdown overlay={menu} placement="bottomCenter" className="menu">
+            <a className="c7n-dropdown-link" href="#">
+              全局 <Icon type="arrow_drop_down" />
+            </a>
+            </Dropdown>
+          </span>
+          <Button onClick={this.toCreat.bind(this)}>创建角色</Button>
+        </div>
+          {this.renderTable()}
       </div>
+
        
     )
           
