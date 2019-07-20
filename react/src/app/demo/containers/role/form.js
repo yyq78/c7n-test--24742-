@@ -12,8 +12,6 @@ class FormField extends Component{
         this.state={
             code:"",
             name:"",
-            label:"",
-            options:[]
         }
     }
     componentDidMount() {
@@ -30,18 +28,35 @@ class FormField extends Component{
         });
         return options;
     }
-
+    // validateName=(e)=>{
+    //     let name=e.target.value.toString();
+    //     const re = /^[A-Za-z].{2,20}$/;
+    //     console.log(name);
+    //     if(!re.test(name)){
+    //         alert("名称必须以字母开头，只能输入字母，数字，_，-，/");
+    //     }
+        
+       
+    // }
+    // validateCode=(e)=>{
+    //     const re2=/^[0-9a-zA-Z\_\-\/\s]+$/;
+    //     let code=e.target.value.toString();
+    //     if(!re2.test(name)){
+    //         alert("编码必须以字母开头，只能输入字母，数字，_，-，/");
+    //     }
+       
+    // }
     render(){
         return(
             <div>
                 <div style={{marginLeft:"15px"}}>
                  <Row gutter={8}>
                     <Col span={6}>
-                    <Input placeholder="角色名称" required label="Basic" />
+                    <Input  onChange={this.validateName} placeholder="角色名称" required label="Basic" />
                     </Col>
                     
                     <Col span={6}>
-                    <Input placeholder="项目编码" required label="Basic" />
+                    <Input  onChange={this.validateCode} placeholder="项目编码" required label="Basic" />
                     </Col>
                 </Row> 
                 </div>

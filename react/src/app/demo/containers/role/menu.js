@@ -93,7 +93,6 @@ class Menu extends Component{
             title: '描述',
             dataIndex: 'age',
           }];
-          const data2 = 
           return <Table  columns={columns} rowSelection={rowSelection} dataSource={Store2.MenuData} />
     }
 }
