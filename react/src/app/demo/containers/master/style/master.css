@@ -2,7 +2,21 @@
   display: flex;
   justify-content: space-around;
 }
+.container .side_bar {
+  width: 250px;
+}
 .container .router {
   flex: 1;
+}
+.c7n-menu-inline,
+.c7n-menu-vertical,
+.c7n-menu-vertical-left {
+  border: none!important;
+}
+.menu {
+  border-right: 0.01rem solid #e8e8e8;
+}
+.c7n-menu-vertical > .c7n-menu-item {
+  width: 250px;
 }
 /*# sourceMappingURL=./master.css.map */

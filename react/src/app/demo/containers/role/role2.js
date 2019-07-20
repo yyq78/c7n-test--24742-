@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import './style/creat.less';
 import Store from './stores/index';
 import {Button} from 'choerodon-ui';
-import Form from './creatForm';
+import FormField from './form';
+import { observer } from 'mobx-react';
 class Creat extends Component{
     goBack(){
         console.log(this.props.history.goBack());
@@ -12,7 +13,7 @@ class Creat extends Component{
         let MAP={
             "organization":"组织",
             "site":"全局",
-            "project":"组织"
+            "project":"项目"
         };
         return (
         <div>
@@ -20,7 +21,9 @@ class Creat extends Component{
                 <Button shape="circle" icon="arrow_back" size="large" type="primary" className="creatBack" onClick={this.goBack.bind(this)}></Button>
                 <span className="creatTitle">创建{MAP[level]}层角色</span>
             </div>
-            <Form/>
+            <div>
+                <FormField/>
+            </div>
         </div>
         )
     }

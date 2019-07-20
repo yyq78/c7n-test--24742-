@@ -10,7 +10,11 @@ class Role extends Component {
   constructor(props){
     super(props);
     this.state={
-      MAP:["全局","组织","项目"]
+      MAP:{
+        "site":"全局",
+        "organization":"组织",
+        "project":"项目"
+      }
     }
   }
   componentDidMount() {
@@ -99,13 +103,13 @@ class Role extends Component {
     };
     const menu=(
       <Menu onClick={onClick}>
-          <Menu.Item key="1" value="全局">
+          <Menu.Item key="1">
             <div>全局</div>
           </Menu.Item>
-          <Menu.Item key="2" value="组织">
+          <Menu.Item key="2">
             <div>组织</div>
           </Menu.Item>
-          <Menu.Item key="3" value="项目">
+          <Menu.Item key="3">
           <div> 项目 </div>
           </Menu.Item>
       </Menu>
@@ -116,9 +120,9 @@ class Role extends Component {
           <span className="page-head-title">角色管理</span>
           <span>
             <Dropdown overlay={menu} placement="bottomCenter" className="menu">
-            <a className="c7n-dropdown-link" href="#">
-              全局 <Icon type="arrow_drop_down" />
-            </a>
+              <a className="c7n-dropdown-link" href="#">
+                {this.state.MAP[Store.level]} <Icon type="arrow_drop_down" />
+              </a>
             </Dropdown>
           </span>
           <Button onClick={this.toCreat.bind(this)}>创建角色</Button>

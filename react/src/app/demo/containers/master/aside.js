@@ -2,28 +2,25 @@ import React,{Component} from 'react';
 import { Menu, Icon, Button } from 'choerodon-ui';
 import {HashRouter,Switch,Link,Route} from 'react-router-dom';
 class Aside extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            collapsed: false,
-        }
-    }
-    toggleCollapsed = () => {
+    state = {
+        collapsed: false,
+      };
+      toggleCollapsed = () => {
+          console.log(this.state.collapsed);
         this.setState({
           collapsed: !this.state.collapsed,
         });
-    }
+      }
     render(){
         return (
             <HashRouter>
-                <div  style={{ width: "250px" }}>
-                    <Menu
-                        defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
-                        mode="inline"
-                    >
+                <div className="menu">
+                    <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
+                        <Icon type="dehaze" />
+                    </Button>
+                    <Menu inlineCollapsed={this.state.collapsed} style={{width:"250px;!important"}} mode="inline">
                         <Menu.Item key="1" >
-                            <div onClick={()=>{this.handleClick();}}>
+                            <div>
                             <Icon type="assignment_ind" />
                             <span>平台设置</span>
                             </div>
@@ -99,11 +96,6 @@ class Aside extends Component{
             </HashRouter>
             
         );
-    }
-    // handleClick(){
-    //     console.log( this.props.history);
-    //     this.props.history.push('/test/role');
-    // }
-    
+    }  
 }
 export default Aside;
