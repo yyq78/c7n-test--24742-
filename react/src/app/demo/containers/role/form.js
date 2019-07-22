@@ -9,7 +9,6 @@ const Option = Select.Option;
 function hasErrors(fieldsError) {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
-@Form.create()
 @observer
 class FormField extends Component{
     componentDidMount() {
@@ -21,7 +20,7 @@ class FormField extends Component{
     renderSelect(){
         const LabelData=Store2.LabelData.slice();
         const options=LabelData.map((item,index)=>{
-            return <Option key={index}>{item.name}</Option>
+            return <Option key={index} value={item.name}>{item.name}</Option>
         });
         return options;
     }
@@ -35,11 +34,10 @@ class FormField extends Component{
         });
     }
     render(){
-        console.log("renders");
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         // Only show error after a field is touched.
-        const roleNameError = isFieldTouched('roleName') && getFieldError('roleName');
-        const roleCodeError = isFieldTouched('roleCode') && getFieldError('roleCode');
+        const roleNameError = getFieldError('roleName');
+        const roleCodeError = getFieldError('roleCode');
         return(
             <div>
                 <Form onSubmit={this.handleSubmit}>
@@ -54,7 +52,7 @@ class FormField extends Component{
                 {getFieldDecorator('roleName', {
                     rules: [{ 
                         required: true,
-                        message: '请输入名称!',
+                        message: '名称不能为空!',
                     }]
                 })(
                     <Input type="text" placeholder="角色名称" />
@@ -69,7 +67,7 @@ class FormField extends Component{
                             {getFieldDecorator('roleCode', {
                                 rules: [{ 
                                     required: true, 
-                                    message: '不匹配!',
+                                    message: '编码必须以字母开头，只能输入字母，数字，_，-，/',
                                     pattern:/^[0-9a-zA-Z\_\-\/]+$/}],
                             })(
                                 <Input type="text" placeholder="角色编码" />
@@ -80,9 +78,18 @@ class FormField extends Component{
                     </div>
                     <Row>
                         <Col span={24}>
-                            <Select mode="角色标签" label="角色标签" style={{width:"30vw"}} placeholder="角色标签" value="" onChange={this.handleCurrencyChange}>
-                            {this.renderSelect()}
-                            </Select>
+                            <FormItem>
+                                {getFieldDecorator('roleLabel',{
+                                    rules:[{required:true,message:"请选择角色标签"}]
+                                })(
+                                    <Select mode="角色标签" label="角色标签" style={{width:"30vw"}} placeholder="角色标签" value="" onChange={this.handleCurrencyChange}>
+                                    {this.renderSelect()}
+                                    </Select>
+                                )
+                                }
+                                
+                            </FormItem>
+                           
                         </Col>
                     </Row> 
                     <Row>
@@ -91,17 +98,28 @@ class FormField extends Component{
                         </Col>
                     </Row>  
                     <Row>
-                        <Col span={6}>
+                        <Col span={2}>
                             <FormItem>
                                 <Button
                                     type="primary"
                                     htmlType="submit"
                                     disabled={hasErrors(getFieldsError())}
                                 >
-                                    Log in
+                                   创建
+                                </Button>
+                            </FormItem>
+                            
+                        </Col>
+                        <Col span={2}>
+                            <FormItem>
+                                <Button
+                                    type="primary"
+                                >
+                                    取消
                                 </Button>
                             </FormItem>
                         </Col>
+                        
                     </Row> 
                 </div>
             </Form>
@@ -110,4 +128,4 @@ class FormField extends Component{
     }
 }
 
-export default FormField;
+export default Form.create()(FormField);
