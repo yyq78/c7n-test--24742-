@@ -13,7 +13,6 @@ class RouteIndex extends React.Component {
     return (
       <Switch>
         <Route path={`${match.url}/role`} component={Role} ></Route>
-        {/* <Route path={`${match.url}/creat`} component={CreatRole}></Route> */}
         <Route path="*" component={nomatch} />
       </Switch>
     );

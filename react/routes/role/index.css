@@ -1,0 +1,27 @@
+.margin-left {
+  display: inline-block;
+  margin-left: 18px;
+}
+.header {
+  line-height: 58px;
+}
+.header-title {
+  display: inline-block;
+  margin-left: 18px;
+  font-size: 18px;
+}
+.header-select {
+  display: inline-block;
+  line-height: 58px;
+  margin-left: 100px;
+  vertical-align: -5px;
+}
+.header-button {
+  line-height: 58px;
+  vertical-align: -5px;
+  margin-left: 100px;
+}
+.list {
+  display: inline-block;
+  margin-left: 18px;
+}
