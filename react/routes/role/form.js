@@ -35,7 +35,6 @@ class FormField extends Component{
     }
     render(){
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
-        // Only show error after a field is touched.
         const roleNameError = getFieldError('roleName');
         const roleCodeError = getFieldError('roleCode');
         return(
