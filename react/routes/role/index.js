@@ -13,7 +13,6 @@ function Index(){
     const [level,setState]=useState("全局");
     const onClick = function ({ key }) {
         setState(key);
-        // const enemyFriendsDs = new DataSet(RoleDataSet(key));
     };
     const menu = (
         <Menu onClick={onClick}>
