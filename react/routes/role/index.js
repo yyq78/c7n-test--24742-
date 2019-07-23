@@ -1,48 +1,28 @@
 import React,{useState} from 'react';
-import { Menu, Dropdown, Icon,Button } from 'choerodon-ui/pro';
-import { DataSet, Table, TextField, NumberField, Modal, Tabs } from 'choerodon-ui/pro';
+import { DataSet, Table,Menu, Dropdown, Icon,Button,Tabs } from 'choerodon-ui/pro';
+import RoleDataSet from './stores/RoleDataSet';
+
 import './index.less';
 const { Column } = Table;
-const { TabPane } = Tabs;
 function Index(){
-    const levelMAP={
-        "site":"全局",
-        "organization":"组织",
-        "project":"项目"
+    const levelMap={
+        "全局":"site",
+        "组织":"organization",
+        "项目":"project"
     };
-    const [level,setState]=useState("选择层级");
+    const [level,setState]=useState("全局");
     const onClick = function ({ key }) {
-        setState(levelMAP[key]);
+        setState(key);
+        // const enemyFriendsDs = new DataSet(RoleDataSet(key));
     };
     const menu = (
         <Menu onClick={onClick}>
-            <Menu.Item key="site">全局</Menu.Item>
-            <Menu.Item key="organization">组织</Menu.Item>
-            <Menu.Item key="project">项目</Menu.Item>
+            <Menu.Item key="全局">全局</Menu.Item>
+            <Menu.Item key="组织">组织</Menu.Item>
+            <Menu.Item key="项目">项目</Menu.Item>
         </Menu>
     );
-    const enemyFriendsDs = new DataSet({
-        autoQuery: true,
-        transport:{
-            read: {
-                url: '/iam/v1/roles/search?page=1&size=10&sort=id,desc',
-                method: 'post',
-                data: {
-                    level: `site`,
-                },
-                transformResponse:data => ({
-                    list: JSON.parse(data).list,
-                }),
-            }
-        },
-        fields: [
-          { name: 'name', type: 'string', label: '名称', required: true },
-          { name: 'code', type: 'string', label: '编码' },
-          { name: 'level', type: 'string', label: '层级'},
-          { name: 'description', type: 'object', label: '来源' },
-          { name: 'enabled', type: 'string', label: '状态' },
-        ],
-    });
+    const enemyFriendsDs = new DataSet(RoleDataSet(levelMap[level]));
     const SourceRenderer=function({value}){
         return value?value:(<div><Icon type="av_timer"/><span> 自定义</span></div>);
     }
