@@ -3,12 +3,6 @@ const config = {
   projectType: 'choerodon',
   buildType: 'single',
   resourcesLevel: ['site', 'origanization', 'project', 'user'],
-  
-  //master: '@choerodon/master',
-  //dashboard: {},
-
-  master: './react/src/app/demo/containers/master',
-  homePath: './react/src/app/demo/containers/home',
+  master: '@choerodon/master',
 };
-
 module.exports = config;
