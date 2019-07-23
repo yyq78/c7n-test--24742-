@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MyHeader from './header';
 import Aside from './aside';
-import './style/master.less';
+import './index.less';
 
 export default class Master extends Component {
   render() {

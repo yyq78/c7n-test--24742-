@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/header.less';
+import './index.less';
 import {axios} from '@choerodon/boot';
 import { Avatar,Popover, Icon, Button} from 'choerodon-ui';
 class myHeader extends React.Component{
