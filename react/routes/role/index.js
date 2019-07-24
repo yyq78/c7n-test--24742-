@@ -45,11 +45,11 @@ function Index(){
         </div>
         <div className="list">
             角色名单 
-            <Table key="friends" dataSet={enemyFriendsDs}>
-                <Column name="name" sortable />
-                <Column name="code" editor sortable />
-                <Column name="level" sortable />
-                <Column name="description" sortable renderer={SourceRenderer}/>
+            <Table key="friends" dataSet={enemyFriendsDs} pagination={{ current:1 }}>
+                <Column name="name" />
+                <Column name="code" editor />
+                <Column name="level"/>
+                <Column name="description" renderer={SourceRenderer}/>
                 <Column name="enabled" width={150} renderer={EnableRenderer}/>
             </Table>
         </div>

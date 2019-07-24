@@ -1,3 +1,4 @@
+
 export default (level)=>{
     
     return {
@@ -6,19 +7,12 @@ export default (level)=>{
             read: {
                 url: '/iam/v1/roles/search',
                 method: 'post',
-                params:{
-                    page:1,
-                    size:10,
-                    sort:"id,desc"
-                },
                 data: {
                     level: level,
-                },
-                transformResponse:data => ({
-                    list: JSON.parse(data).list,
-                }),
+                }
             }
         },
+        paging:true,
         fields: [
           { name: 'name', type: 'string', label: '名称', required: true },
           { name: 'code', type: 'string', label: '编码' },
